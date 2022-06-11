@@ -27,6 +27,9 @@
     "webpack-dev-server": "^4.7.4"
   },
   "dependencies": {
+    "@pdfme/generator": "^1.0.13",
+    "lorem-ipsum": "^2.0.8",
+    "pdfmake": "^0.2.5",
     "wasm-pdf": "^0.1.11"
   }
 }

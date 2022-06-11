@@ -9,10 +9,10 @@
     <embed id="embedded-pdf" src="" width="100%" height="100%" type="application/pdf" />
     <script>
       let pdfFileBlobURL = null;
-      let start = new Date();
       let generatePDF = (data) => {
         let stop = new Date();
-        console.log(stop - start);
+        let time = (stop - document.start1).toString();
+        console.log('wasm-pdf: ' + time);
         const blob = new Blob([data], {
           type: 'application/pdf',
         });
