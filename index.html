@@ -1,35 +1,38 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <title>WASM-PDF</title>
+  </head>
 
-<head>
-  <meta charset="utf-8">
-  <title>WASM-PDF</title>
-</head>
+  <body>
+    <embed id="embedded-pdf" src="" width="100%" height="100%" type="application/pdf" />
+    <script>
+      let pdfFileBlobURL = null;
+      let start = new Date();
+      let generatePDF = (data) => {
+        let stop = new Date();
+        console.log(stop - start);
+        const blob = new Blob([data], {
+          type: 'application/pdf',
+        });
+        if (pdfFileBlobURL !== null) {
+          URL.revokeObjectURL(pdfFileBlobURL);
+        }
+        pdfFileBlobURL = URL.createObjectURL(blob);
+        document.getElementById('embedded-pdf').setAttribute('src', pdfFileBlobURL);
+      };
 
-<body>
-  <p>
-    One moment, creating PDF...
-  </p>
-  <script>
-    let pdfFileBlobURL = null;
-    let generatePDF = (data) => {
-      const blob = new Blob([data], {
-        type: 'application/pdf'
-      });
-      if (pdfFileBlobURL !== null) {
-        URL.revokeObjectURL(pdfFileBlobURL);
-      }
-      pdfFileBlobURL = URL.createObjectURL(blob);
-      // for debugging purposes, open another window
-      //window.open(pdfFileBlobURL, "_blank");
-      window.location.href = pdfFileBlobURL;
+      let jsonOut = (data) => {
+        console.log(JSON.stringify(data));
+      };
+    </script>
+    <script src="./bootstrap.js"></script>
+  </body>
+  <style>
+    html,
+    body {
+      height: 100%;
     }
-
-    let jsonOut = (data) => {
-      console.log(JSON.stringify(data));
-    };
-  </script>
-  <script src="./bootstrap.js"></script>
-</body>
-
+  </style>
 </html>

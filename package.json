@@ -9,7 +9,7 @@
   },
   "scripts": {
     "build": "webpack --config webpack.config.js",
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server --client-web-socket-url wss://jussiniinikoski-wasm-pdf-app-vp954v4xfwwx7-8080.githubpreview.dev/ws --watch-files ./**"
   },
   "keywords": [
     "webassembly",
